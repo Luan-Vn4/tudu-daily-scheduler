@@ -8,19 +8,30 @@
 </head>
 <body>
     <img src="imagens/logo.svg" alt="logo">
-    <div class="container">
-        <div class="tudu-app">
-            <h2>TO DO LIST <img src="imagens/icon.png"></h2>
-            <div class="row">
-                <input type="text" id="input-box" placeholder="Add your Task">
-                <button onclick="addTask()">Add</button>
-            </div>
-            <ul id="list-container">
-                <!--li class="checked">Task 1</li>
-                <li>Task 2</li>
-                <li>Task 3</li> -->
-            </ul>
+
+    <div class="chooseTab">
+        <button id="showTodo" class="tabButton">TODO</button>
+        <button id="showCalendar" class="tabButton">CALENDAR</button>
+    </div>
+
+        <div class="container">
+            <div class="tudu" id="todoTab">
+                <h2>TO DO LIST <img src="imagens/icon.png"></h2>
+                <div class="row">
+                    <input type="text" id="input-box" placeholder="Add your Task">
+                    <button onclick="addTask()">Add</button>
+                </div>
+                <ul id="list-container">
+                    <!--li class="checked">Task 1</li>
+                    <li>Task 2</li>
+                    <li>Task 3</li> -->
+                </ul>
         </div>
+
+        <div class="calendar" id='calendarTab'>
+
+        </div>
+
     </div>
 
     <script src="script.js"></script>

@@ -4,30 +4,35 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 .container{
    width: 100%;
    min-height: 100vh;
-   background: linear-gradient(135deg, #153677, #4e085f);
+   background: linear-gradient(135deg, #153677, #eb2727);
    padding: 10px;
 }
-.tudu-app{
+.chooseTab{
+   background-color: rgb(175, 175, 175);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: row;
+}
+.tudu{
     width: 100%;
     max-width: 540px;
     background: #fff;
     margin: 100px auto 20px;
     padding: 40px 30px 70px;
     border-radius: 10px;
-
 }
-.tudu-app h2{
+.tudu h2{
     color:#002765;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 
 }
-.tudu-app h2 img{
+.tudu h2 img{
     width: 30px;
     margin-left: 10px;
 }
@@ -57,12 +62,32 @@ button{
     cursor: pointer;
     border-radius: 40px;
 }
+.tabButton {
+    padding: 10px 20px;
+    background-color: #ff4e57;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
+.tabButton:hover {
+    background-color: #ee8181;
+}
+.tabContent {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+}
 ul li{
     list-style: none;
     font-size: 17px;
     padding: 12px 8px 12px 50px;
     user-select: none;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 ul li::before{
     content: '';
@@ -85,7 +110,7 @@ ul li.checked::before{
 }
 ul li span{
     position: absolute;
-    right: 0;
+    right: 5px;
     top: 5px;
     width: 40px;
     height: 40px;
@@ -94,7 +119,22 @@ ul li span{
     line-height: 40px;
     text-align: center;
     border-radius: 50%;
+    margin-left: auto;
 }
 ul li span:hover{
     background: #edeef0;
+}
+.edit-button {
+    background-color: #007bff; 
+    color: #fff; 
+    border: none; 
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+.edit-button:hover {
+    background-color: #0056b3; 
 }
