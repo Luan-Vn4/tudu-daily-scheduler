@@ -1,8 +1,10 @@
 package br.upe.tudu.rest.controllers;
 
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@WebServlet(name = "TaskController", urlPatterns = "/api/tasks/*")
-public class TaskController extends HttpServlet {
+@RequestMapping("/api/tasks")
+@RestController
+public class TaskController{
+
 }

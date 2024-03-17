@@ -1,44 +1,37 @@
 package br.upe.tudu.rest.controllers;
 
-import br.upe.tudu.data.daos.UserDAO;
 import br.upe.tudu.data.models.User;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import br.upe.tudu.rest.dtos.UserDTO;
+import br.upe.tudu.rest.services.UserService;
+import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
+@RequestMapping("/api/users")
+@RestController
+public class UserController {
 
-@WebServlet(name = "UserController", urlPatterns = "/api/users/*")
-public class UserController extends HttpServlet {
+    UserService userService;
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getParameter("id") != null) {
-            User user = this.getUser(Long.parseLong(req.getParameter("id")));
-            resp.getWriter().write(user.getName());
-        }
+    @GetMapping("/*")
+    public UserDTO getUser(@RequestParam Long id) {
+        System.out.println(id);
+        return new UserDTO(1L, "Luan");
     }
 
-    @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doDelete(req, resp);
+    @PostMapping("/")
+    public void registerUser(User user) {
+        userService.registerUser(user);
     }
 
-    @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPut(req, resp);
+    public User updateUser(User user) {
+        return userService.updateUser(user);
     }
 
-    public User getUser(Long id) {
-        UserDAO userDAO = new UserDAO();
-        return userDAO.findUserById(id);
+    public void deleteUser(@RequestParam Long id) {
+        userService.deleteUser(id);
     }
 
 }

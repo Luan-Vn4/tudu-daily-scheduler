@@ -1,7 +1,13 @@
 package br.upe.tudu;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class TuduApplication {
+
     public static void main(String[] args) {
-        System.out.println("Olá");
+        SpringApplication.run(TuduApplication.class, args);
     }
+
 }
