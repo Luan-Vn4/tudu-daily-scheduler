@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TU DU</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <script src="todo.js" defer></script>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="#">
+    <img src="">
+  </a>
+  <a class="active" href="#">TU DU</a>
+  <a href="#">CALENDÁRIO</a>
+  <a href="#" class="my-account-button">MINHA CONTA</a>
+</nav>
+
+<div class="board">
+  <form id="todo-form">
+    <input type="text" placeholder="Nova Task" id="todo-input" />
+    <button type="submit">Adicionar +</button>
+  </form>
+
+  <div class="lanes">
+    <div class="swim-lane" id="todo-lane">
+      <h3 class="heading">TU DU</h3>
+    </div>
+
+    <div class="swim-lane" id="in-process-lane">
+      <h3 class="heading">IN PROCESS</h3>
+    </div>
+
+    <div class="swim-lane" id="done-lane">
+      <h3 class="heading">DONE</h3>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
