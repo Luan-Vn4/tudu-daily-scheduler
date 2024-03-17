@@ -68,7 +68,9 @@ public class TaskDAOImpl implements TaskDAO {
 
     @Override
     public List<Task> findTasksByUser(Long id) {
-        return null;
+        return entityManager.createQuery("FROM Task WHERE user.id = :id", Task.class)
+                            .setParameter("id", id)
+                            .getResultList();
     }
 
 }

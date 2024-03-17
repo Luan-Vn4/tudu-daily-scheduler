@@ -17,19 +17,20 @@ public class UserController {
 
     @GetMapping("/*")
     public UserDTO getUser(@RequestParam Long id) {
-        System.out.println(id);
-        return new UserDTO(1L, "Luan");
+        return userService.findUser(id);
     }
 
     @PostMapping("/")
-    public void registerUser(User user) {
+    public void registerUser(@RequestBody User user) {
         userService.registerUser(user);
     }
 
-    public User updateUser(User user) {
+    @PutMapping("/")
+    public User updateUser(@RequestBody User user) {
         return userService.updateUser(user);
     }
 
+    @DeleteMapping("/*")
     public void deleteUser(@RequestParam Long id) {
         userService.deleteUser(id);
     }
