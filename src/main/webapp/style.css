@@ -6,7 +6,7 @@
 }
 
 body {
-    background: rgba(168, 168, 168, 0.9);
+    background: #333333;
 }
 
 .container-wrapper {
@@ -15,10 +15,10 @@ body {
 }
 
 .container {
-    flex: 1; 
+    flex: 1;
     margin: 0px;
     min-height: 100vh;
-    background: rgba(168, 168, 168, 0.9);
+    background: #333333;
     padding: 10px;
     max-width: calc(50% - 20px);
     box-sizing: border-box;
@@ -225,4 +225,8 @@ ul li span:hover {
     border-radius: 5px;
     cursor: pointer;
     z-index: 9999;
+}
+
+li.task {
+    cursor: move;
 }
