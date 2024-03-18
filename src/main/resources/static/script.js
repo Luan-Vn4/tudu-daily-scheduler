@@ -38,7 +38,7 @@ function handleDrop(e) {
 
 
 function goToAccountPage() {
-    window.location.href = 'account.html';
+    window.location.href = 'myaccount.html';
 }
 
 function goToHomePage() {
