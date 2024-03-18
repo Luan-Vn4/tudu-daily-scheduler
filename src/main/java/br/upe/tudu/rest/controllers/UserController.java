@@ -9,28 +9,31 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController {
 
+    // ATRIBUTOS
     UserService userService;
 
+    // MÉTODOS DE ACESSO
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/*")
-    public UserDTO getUser(@RequestParam Long id) {
-        return userService.findUser(id);
-    }
-
+    // MÉTODOS HTTP
     @PostMapping("/")
     public void registerUser(@RequestBody User user) {
         userService.registerUser(user);
     }
 
+    @GetMapping("/")
+    public UserDTO getUser(@RequestParam Long id) {
+        return userService.findUser(id);
+    }
+
     @PutMapping("/")
-    public User updateUser(@RequestBody User user) {
+    public UserDTO updateUser(@RequestBody User user) {
         return userService.updateUser(user);
     }
 
-    @DeleteMapping("/*")
+    @DeleteMapping("/")
     public void deleteUser(@RequestParam Long id) {
         userService.deleteUser(id);
     }

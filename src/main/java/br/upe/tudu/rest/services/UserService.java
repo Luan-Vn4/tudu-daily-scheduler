@@ -9,20 +9,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
+    // ATRIBUTOS
     UserDAO userDAO;
 
+    // MÉTODOS DE ACESSO
     public UserService(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 
+    // SERVIÇOS
     @Transactional
     public void registerUser(User user) {
         this.userDAO.save(user);
     }
 
     @Transactional
-    public User updateUser(User user) {
-        return this.userDAO.update(user);
+    public UserDTO updateUser(User user) {
+        return UserDTO.from(this.userDAO.update(user));
     }
 
     @Transactional
