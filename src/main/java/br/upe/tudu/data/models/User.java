@@ -9,7 +9,6 @@ import lombok.*;
 @ToString
 public class User {
 
-    // ATRIBUTOS
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

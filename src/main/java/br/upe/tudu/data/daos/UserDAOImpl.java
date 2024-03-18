@@ -9,12 +9,16 @@ import java.util.stream.Collectors;
 
 @Repository
 public class UserDAOImpl implements UserDAO{
+
+    // ATRIBUTOS
     private final EntityManager entityManager;
 
+    // MÉTODOS DE ACESSO
     public UserDAOImpl (EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
+    // OPERAÇÕES DAO
     @Override
     public void save(User user) {
         entityManager.persist(user);
@@ -32,10 +36,7 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public void deleteById(Long id) {
-        User user = entityManager.find(User.class, id);
-        if (user != null){
-            entityManager.remove(user);
-        }
+        entityManager.remove(entityManager.find(User.class, id));
     }
 
     @Override

@@ -9,23 +9,23 @@ import java.util.stream.Collectors;
 @Repository
 public class TaskDAOImpl implements TaskDAO {
 
+    // ATRIBUTOS
     private final EntityManager entityManager;
 
+    // MÉTODOS DE ACESSO
     public TaskDAOImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
+    // OPERAÇÕES DAO
     @Override
     public void save(Task task) {
-        //task.getSubTasks().forEach(subTask -> subTask.setTask(task));
         entityManager.persist(task);
     }
 
     @Override
     public Task update(Task task) {
-        //task.getSubTasks().forEach(subTask -> subTask.setTask(task));
-        entityManager.merge(task);
-        return entityManager.find(Task.class ,task.getId());
+        return entityManager.merge(task);
     }
 
     @Override

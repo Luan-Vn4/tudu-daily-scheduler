@@ -13,7 +13,6 @@ import java.util.List;
 @ToString
 public class Task {
 
-    // ATRIBUTOS
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
