@@ -4,6 +4,6 @@ import br.upe.tudu.data.models.Task;
 import java.util.List;
 
 public interface TaskDAO extends DAO <Task, Long> {
-    List<Task> findTasksByUser(Long id);
+    List<Task> findTasksByUser(Long userId);
 
 }

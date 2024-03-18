@@ -17,12 +17,15 @@ public class TaskDAOImpl implements TaskDAO {
 
     @Override
     public void save(Task task) {
+        //task.getSubTasks().forEach(subTask -> subTask.setTask(task));
         entityManager.persist(task);
     }
 
     @Override
     public Task update(Task task) {
-        return entityManager.merge(task);
+        //task.getSubTasks().forEach(subTask -> subTask.setTask(task));
+        entityManager.merge(task);
+        return entityManager.find(Task.class ,task.getId());
     }
 
     @Override
@@ -33,9 +36,7 @@ public class TaskDAOImpl implements TaskDAO {
     @Override
     public void deleteById(Long id) {
         Task task = entityManager.find(Task.class, id);
-        if (task != null){
-            entityManager.remove(task);
-        }
+        entityManager.remove(task);
     }
 
     @Override
@@ -48,12 +49,12 @@ public class TaskDAOImpl implements TaskDAO {
 
     @Override
     public void delete(Task task) {
-        entityManager.remove(task);
+        entityManager.remove(entityManager.merge(task));
     }
 
     @Override
     public void delete(List<Task> tasks) {
-        tasks.stream().map(user -> entityManager.find(user.getClass(), user.getId())).forEach(entityManager::remove);
+        tasks.stream().map(entityManager::merge).forEach(entityManager::remove);
     }
 
     @Override
@@ -67,9 +68,9 @@ public class TaskDAOImpl implements TaskDAO {
     }
 
     @Override
-    public List<Task> findTasksByUser(Long id) {
-        return entityManager.createQuery("FROM Task WHERE user.id = :id", Task.class)
-                            .setParameter("id", id)
+    public List<Task> findTasksByUser(Long userId) {
+        return entityManager.createQuery("FROM Task WHERE user.id = :user_id", Task.class)
+                            .setParameter("user_id", userId)
                             .getResultList();
     }
 
