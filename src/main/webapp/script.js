@@ -1,6 +1,50 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 
+// Função para lidar com o evento de arrastar iniciado
+function handleDragStart(e) {
+    e.dataTransfer.setData("text/plain", e.target.innerHTML);
+    e.target.classList.add("is-dragging"); // Adiciona classe de arrastando
+}
+
+// Adiciona eventos de zona de queda
+const todoTab = document.getElementById("todoTab");
+const inProgressTab = document.getElementById("inProgressTab");
+const doneTab = document.getElementById("doneTab");
+
+todoTab.addEventListener("dragover", allowDrop);
+inProgressTab.addEventListener("dragover", allowDrop);
+doneTab.addEventListener("dragover", allowDrop);
+
+todoTab.addEventListener("drop", handleDrop);
+inProgressTab.addEventListener("drop", handleDrop);
+doneTab.addEventListener("drop", handleDrop);
+
+// Função para permitir a queda na zona de soltar
+function allowDrop(e) {
+    e.preventDefault();
+}
+
+// Função para lidar com o evento de soltar
+function handleDrop(e) {
+    e.preventDefault();
+    const data = e.dataTransfer.getData("text/plain");
+    const li = document.createElement("li");
+    li.innerHTML = data;
+    this.querySelector("ul").appendChild(li);
+    e.target.classList.remove("is-dragging"); // Remove classe de arrastando
+    saveData();
+}
+
+
+function goToAccountPage() {
+    window.location.href = 'account.html';
+}
+
+function goToHomePage() {
+    window.location.href = 'index.html';
+}
+
 function addTask(){
     if(inputBox.value == ''){
         alert("You must write something!");
@@ -8,6 +52,9 @@ function addTask(){
     else{
         let li = document.createElement("li");
         li.innerHTML = inputBox.value;
+        li.setAttribute("draggable", "true"); // tornar a tarefa arrastável
+        li.classList.add("task"); // adicionar classe de tarefa
+        saveData();
 
         let span = document.createElement("span");
         span.innerHTML = "\u00d7";
@@ -31,12 +78,13 @@ function addTask(){
         };
         li.appendChild(editButton);
 
-
         listContainer.appendChild(li);
+        li.addEventListener("dragstart", handleDragStart); // Adiciona evento de arrastar
     }
     inputBox.value = "";
     saveData();
 }
+
 listContainer.addEventListener("click", function(e){
     if(e.target.tagName == "LI"){
         e.target.classList.toggle("checked");
@@ -71,3 +119,17 @@ function showTask(){
 }
 // localStorage.clear();
 showTask();
+
+
+// Adiciona eventos de arrastar às tarefas existentes
+const tasks = document.querySelectorAll("#list-container li");
+tasks.forEach(task => {
+    task.addEventListener("dragstart", handleDragStart);
+});
+
+// Adiciona eventos de arrastar às tarefas adicionadas dinamicamente
+listContainer.addEventListener("DOMNodeInserted", function(e) {
+    if (e.target.tagName === "LI") {
+        e.target.addEventListener("dragstart", handleDragStart);
+    }
+});

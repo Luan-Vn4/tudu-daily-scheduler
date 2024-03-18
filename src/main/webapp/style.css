@@ -1,42 +1,63 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-.container{
-   width: 100%;
-   min-height: 100vh;
-   background: linear-gradient(135deg, #153677, #eb2727);
-   padding: 10px;
+
+body {
+    background: rgba(168, 168, 168, 0.9);
 }
-.chooseTab{
-   background-color: rgb(175, 175, 175);
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: row;
+
+.container-wrapper {
+    display: flex;
+    justify-content: space-around;
 }
-.tudu{
+
+.container {
+    flex: 1; 
+    margin: 0px;
+    min-height: 100vh;
+    background: rgba(168, 168, 168, 0.9);
+    padding: 10px;
+    max-width: calc(50% - 20px);
+    box-sizing: border-box;
+}
+
+.tudu {
     width: 100%;
     max-width: 540px;
-    background: #fff;
+    background: #ff7575;
     margin: 100px auto 20px;
     padding: 40px 30px 70px;
     border-radius: 10px;
 }
-.tudu h2{
-    color:#002765;
+
+.tudu-red {
+    background: #ff7575;
+}
+
+.tudu-yellow {
+    background: #fdff75;
+}
+
+.tudu-green {
+    background: #75ff75;
+}
+
+.tudu h2 {
+    color: #002765;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-
 }
-.tudu h2 img{
+
+.tudu h2 img {
     width: 30px;
     margin-left: 10px;
 }
-.row{
+
+.row {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -45,14 +66,16 @@
     padding-left: 20px;
     margin-bottom: 25px;
 }
-input{
+
+input {
     flex: 1;
     border: none;
     outline: none;
     background: transparent;
     padding: 10px;
 }
-button{
+
+button {
     border: none;
     outline: none;
     padding: 16px 50px;
@@ -62,6 +85,7 @@ button{
     cursor: pointer;
     border-radius: 40px;
 }
+
 .tabButton {
     padding: 10px 20px;
     background-color: #ff4e57;
@@ -69,18 +93,29 @@ button{
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    margin: 5px;
+    margin-left: 10px;
 }
+
 .tabButton:hover {
     background-color: #ee8181;
 }
+
 .tabContent {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-top: 10px;
 }
-ul li{
+
+li {
+    background-color: white;
+    border-radius: 15px;
+    padding: 12px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+}
+
+ul li {
     list-style: none;
     font-size: 17px;
     padding: 12px 8px 12px 50px;
@@ -89,7 +124,8 @@ ul li{
     display: flex;
     align-items: center;
 }
-ul li::before{
+
+ul li::before {
     content: '';
     position: absolute;
     height: 28px;
@@ -101,14 +137,17 @@ ul li::before{
     top: 12px;
     left: 8px;
 }
-ul li.checked{
+
+ul li.checked {
     color: #555;
-    text-decoration: line-through;   
+    text-decoration: line-through;
 }
-ul li.checked::before{
+
+ul li.checked::before {
     background-image: url(imagens/checked.png);
 }
-ul li span{
+
+ul li span {
     position: absolute;
     right: 5px;
     top: 5px;
@@ -121,13 +160,15 @@ ul li span{
     border-radius: 50%;
     margin-left: auto;
 }
-ul li span:hover{
+
+ul li span:hover {
     background: #edeef0;
 }
+
 .edit-button {
-    background-color: #007bff; 
-    color: #fff; 
-    border: none; 
+    background-color: #007bff;
+    color: #fff;
+    border: none;
     padding: 8px 16px;
     font-size: 14px;
     cursor: pointer;
@@ -135,6 +176,53 @@ ul li span:hover{
     transition: background-color 0.3s;
     margin-left: 10px;
 }
+
 .edit-button:hover {
-    background-color: #0056b3; 
+    background-color: #0056b3;
+}
+
+#myAccountButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #ff4e57;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+#myAccountButton:hover {
+    background-color: #ee8181;
+}
+
+#showTodo {
+    position: absolute;
+    top: 0;
+    right: 300px;
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #ff4e57;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+#showCalendar {
+    position: absolute;
+    top: 0;
+    right: 150px;
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #ff4e57;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 9999;
 }
