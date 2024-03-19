@@ -33,9 +33,23 @@ function handleDrop(e) {
     li.innerHTML = data;
     this.querySelector("ul").appendChild(li);
     e.target.classList.remove("is-dragging"); // Remove classe de arrastando
+    
+    // Remover o item da lista original pelo texto
+    const originalList = document.getElementById("list-container");
+    const originalItem = Array.from(originalList.querySelectorAll("li")).find(item => item.innerHTML === data);
+    if (originalItem) {
+         originalItem.remove();
+    }
     saveData();
 }
 
+function handleDelete(e) {
+    const item = e.target.closest("li");
+    if (item) {
+        item.remove();
+        saveData();
+    }
+}
 
 function goToAccountPage() {
     window.location.href = 'myaccount.html';
@@ -45,19 +59,19 @@ function goToHomePage() {
     window.location.href = 'index.html';
 }
 
+let taskIdCounter = 0; // Variável para contar o número de tarefas
+
 function addTask(){
     if(inputBox.value == ''){
         alert("You must write something!");
     }
     else{
         let li = document.createElement("li");
+        let taskId = "task_" + taskIdCounter++; // Incrementa o contador para obter um ID único
+        li.id = taskId;
         li.innerHTML = inputBox.value;
-        li.setAttribute("draggable", "true"); // tornar a tarefa arrastável
-        li.classList.add("task"); // adicionar classe de tarefa
-        saveData();
-        li.setAttribute("draggable", "true"); // tornar a tarefa arrastável
-        li.classList.add("task"); // adicionar classe de tarefa
-        saveData();
+        li.setAttribute("draggable", "true");
+        li.classList.add("task");
 
         let span = document.createElement("span");
         span.innerHTML = "\u00d7";
@@ -82,13 +96,12 @@ function addTask(){
         li.appendChild(editButton);
 
         listContainer.appendChild(li);
-        li.addEventListener("dragstart", handleDragStart); // Adiciona evento de arrastar
-        li.addEventListener("dragstart", handleDragStart); // Adiciona evento de arrastar
+        li.addEventListener("dragstart", handleDragStart);
+
+        saveData();
     }
     inputBox.value = "";
-    saveData();
 }
-
 
 listContainer.addEventListener("click", function(e){
     if(e.target.tagName == "LI"){
@@ -100,12 +113,6 @@ listContainer.addEventListener("click", function(e){
         saveData();
     }
 }, false);
-
-// Função para lidar com o evento de arrastar iniciado
-function handleDragStart(e) {
-    e.dataTransfer.setData("text/plain", e.target.innerHTML);
-    e.target.classList.add("is-dragging"); // Adiciona classe de arrastando
-}
 
 function saveData(){
     localStorage.setItem("data", listContainer.innerHTML);
@@ -142,3 +149,9 @@ listContainer.addEventListener("DOMNodeInserted", function(e) {
         e.target.addEventListener("dragstart", handleDragStart);
     }
 });
+
+
+// Carrega as tarefas salvas
+if (localStorage.getItem("data")) {
+    listContainer.innerHTML = localStorage.getItem("data");
+}
