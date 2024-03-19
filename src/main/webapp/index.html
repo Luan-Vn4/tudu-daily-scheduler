@@ -9,7 +9,7 @@
 <body>
 <header>
     <img src="imagens/logo.svg" alt="logo">
-    <button id="showTodo" class="tabButton">TODO</button>
+    <button id="showTodo" class="tabButton">TO DO</button>
     <button id="showCalendar" class="tabButton">CALENDAR</button>
     <button id="myAccountButton" onclick="goToAccountPage()">Minha Conta</button>
 </header>
@@ -33,7 +33,11 @@
         <div class="tudu tudu-yellow" id="inProgressTab">
             <h2>IN PROGRESS <img src="imagens/icon.png"></h2>
             <div class="row">
-                <ul id="inProgressList" ondrop="handleDrop(event)" ondragover="allowDrop(event)"></ul>
+                <ul id="inProgressList" ondrop="handleDrop(event)" ondragover="allowDrop(event)">
+                    <!--li class="checked">Task 1</li>
+                <li>Task 2</li>
+                <li>Task 3</li> -->
+                </ul>
             </div>
         </div>
     </div>

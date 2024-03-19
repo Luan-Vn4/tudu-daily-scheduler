@@ -67,6 +67,7 @@ body {
     margin-bottom: 25px;
 }
 
+
 input {
     flex: 1;
     border: none;
@@ -226,6 +227,12 @@ ul li span:hover {
     cursor: pointer;
     z-index: 9999;
 }
+
+#showTodo:hover,
+#showCalendar:hover {
+    background-color: #ee8181;
+}
+
 
 li.task {
     cursor: move;
