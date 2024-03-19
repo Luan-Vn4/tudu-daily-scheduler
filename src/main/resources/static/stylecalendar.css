@@ -30,12 +30,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #333333;
 }
 .logo img {
     max-width: 100px;
 }
 .chooseTab{
-    background-color: rgb(175, 175, 175);
     display: flex;
     justify-content: center;
     align-items: center;
