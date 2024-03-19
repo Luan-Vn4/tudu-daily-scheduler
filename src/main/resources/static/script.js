@@ -7,6 +7,7 @@ function handleDragStart(e) {
     e.target.classList.add("is-dragging"); // Adiciona classe de arrastando
 }
 
+
 // Adiciona eventos de zona de queda
 const todoTab = document.getElementById("todoTab");
 const inProgressTab = document.getElementById("inProgressTab");
