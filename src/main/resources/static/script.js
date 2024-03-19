@@ -60,6 +60,10 @@ function goToHomePage() {
     window.location.href = 'index.html';
 }
 
+function goToCalendarPage(){
+    window.location.href = 'indexcalendar.html'
+}
+
 let taskIdCounter = 0; // Variável para contar o número de tarefas
 
 function addTask(){
